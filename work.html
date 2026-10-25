@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sh2rk Web Studio — Разработка Ботов, Сайтов & Скриптов</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#08090a',
+                        cardBg: '#121316',
+                        borderClr: '#222429',
+                        accentBlue: '#3b82f6',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08090a;
+            color: #f4f4f5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .bg-grid-subtle {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .clean-card {
+            background-color: #121316;
+            border: 1px solid #222429;
+            border-radius: 20px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .clean-card:hover {
+            border-color: #3b82f640;
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.08);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-grid-subtle min-h-screen relative pb-16">
+
+    <div class="max-w-5xl mx-auto px-4 pt-8">
+
+        <!-- Top Header / Navigation -->
+        <header class="clean-card p-4 mb-8 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold font-mono text-sm">
+                    S2
+                </div>
+                <div>
+                    <span class="text-sm font-bold text-white tracking-tight">Sh2rk Web Studio</span>
+                    <div class="text-[10px] text-gray-500 font-mono">Freelance & Automation</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="copyTg()" class="px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-mono text-gray-300 hover:text-white hover:border-zinc-700 transition flex items-center gap-2">
+                    <i class="fa-regular fa-copy text-blue-400"></i>
+                    <span class="hidden sm:inline">@sh2rk_white</span>
+                </button>
+
+                <a href="https://t.me/sh2rk_white" target="_blank" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white transition flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span>Заказать</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Hero Banner -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-10">
+            
+            <!-- Hero Description -->
+            <div class="md:col-span-8 clean-card p-8 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-4">
+                        <i class="fa-solid fa-bolt text-blue-400"></i> Fast & Scalable Code
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug mb-4">
+                        Разработка Telegram ботов, скриптов и веб-приложений
+                    </h1>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Пишу надежные решения под ключ: боты авто-продаж (FunPay, Telegram Stars), кроссплатформенные мобильные приложения на Flutter, веб-сервисы и скрипты автоматизации.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-800/80 text-xs">
+                    <div>
+                        <div class="text-gray-500">Гарантия</div>
+                        <div class="text-white font-bold font-mono mt-0.5">100% ТЗ</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Сроки</div>
+                        <div class="text-white font-bold font-mono mt-0.5">От 24 часов</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Поддержка</div>
+                        <div class="text-emerald-400 font-bold font-mono mt-0.5">24/7</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fast Service Cards -->
+            <div class="md:col-span-4 clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="text-xs font-mono text-gray-400 uppercase tracking-wider mb-4 flex items-center justify-between">
+                        <span>Направления</span>
+                        <i class="fa-solid fa-cubes text-gray-500"></i>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+                            <div class="text-white font-semibold flex items-center justify-between">
+                                <span>Telegram Боты & Stars</span>
+                                <i class="fa-brands fa-telegram text-blue-400"></i>
+                            </div>
+                            <div class="text-gray-500 text-[11px] mt-1">Автовыдача, платежи, парсинг</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+                            <div class="text-white font-semibold flex items-center justify-between">
+                                <span>Мобильные Приложения</span>
+                                <i class="fa-solid fa-mobile-screen text-cyan-400"></i>
+                            </div>
+                            <div class="text-gray-500 text-[11px] mt-1">Flutter / Android Native</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+                            <div class="text-white font-semibold flex items-center justify-between">
+                                <span>Скрипты & Софт</span>
+                                <i class="fa-solid fa-code text-purple-400"></i>
+                            </div>
+                            <div class="text-gray-500 text-[11px] mt-1">Python, C++, FunPay автовыдача</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://t.me/sh2rk_white" target="_blank" class="mt-4 w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-center text-xs font-bold text-gray-200 border border-zinc-700 transition flex items-center justify-center gap-2">
+                    <span>Написать в ЛС</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tech Marquee Scroll -->
+        <div class="clean-card p-4 mb-10 overflow-hidden relative">
+            <div class="animate-marquee items-center gap-8">
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-python text-yellow-400 text-sm"></i> Python / aiogram</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-flutter text-cyan-400 text-sm"></i> Flutter</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-js text-yellow-300 text-sm"></i> JavaScript</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-solid fa-code text-blue-400 text-sm"></i> C++</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-java text-orange-400 text-sm"></i> Kotlin / Java</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-solid fa-microchip text-emerald-400 text-sm"></i> Arduino / IoT</div>
+
+                <!-- Loop -->
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-python text-yellow-400 text-sm"></i> Python / aiogram</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-flutter text-cyan-400 text-sm"></i> Flutter</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-js text-yellow-300 text-sm"></i> JavaScript</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-solid fa-code text-blue-400 text-sm"></i> C++</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-brands fa-java text-orange-400 text-sm"></i> Kotlin / Java</div>
+                <div class="flex items-center gap-2.5 text-xs font-mono text-gray-300"><i class="fa-solid fa-microchip text-emerald-400 text-sm"></i> Arduino / IoT</div>
+            </div>
+        </div>
+
+        <!-- Portfolio Showcase Section -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h2 class="text-xl font-bold text-white tracking-tight">Примеры Выполненных Работ</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Готовые проекты и решения для клиентов</p>
+            </div>
+            <i class="fa-solid fa-laptop-code text-gray-500 text-xl"></i>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+
+            <!-- Card 1 -->
+            <div class="clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-lg">
+                                <i class="fa-brands fa-telegram"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">FunPay & Stars Auto-Seller</h3>
+                                <div class="text-[11px] text-gray-500 font-mono">Автоматизация & Бот</div>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-semibold border border-emerald-500/20">Готово</span>
+                    </div>
+
+                    <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                        Бот автовыдачи цифровых товаров для FunPay и автоматической продажи Telegram Stars. Полная поддержка лотов, подтяжка заказов и уведомления.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Python</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">aiogram 3.x</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">FunPay API</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Flux Messenger App</h3>
+                                <div class="text-[11px] text-gray-500 font-mono">Android / Mobile App</div>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-semibold border border-blue-500/20">Приложение</span>
+                    </div>
+
+                    <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                        Приватный анонимный мессенджер с уникальными FluxID, биометрией, кастомной тёмной темой и интеграцией стикеров/эмодзи.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Kotlin</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Firebase</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Biometrics</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg">
+                                <i class="fa-solid fa-wifi"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Google Maps NFC System</h3>
+                                <div class="text-[11px] text-gray-500 font-mono">Hardware / B2B Solution</div>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-semibold border border-purple-500/20">Бизнес</span>
+                    </div>
+
+                    <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                        Программирование NFC-стоек и табличек для автоматического перехода на страницу отзывов заведений в Google Maps.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">NFC NTAG215</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Google API</span>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="clean-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
+                                <i class="fa-solid fa-terminal"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Minecraft Automation Scripts</h3>
+                                <div class="text-[11px] text-gray-500 font-mono">Mods & Automation</div>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-semibold border border-amber-500/20">Скрипты</span>
+                    </div>
+
+                    <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                        Разработка кастомных Baritone-скриптов, Fabric-модов и макросов под популярные серверы (FunTime, ReallyWorld).
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Java</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Baritone</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-gray-300">Fabric</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NEW SECTION 1: Interactive Price Calculator -->
+        <div class="clean-card p-6 md:p-8 mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">Калькулятор и Расчет ТЗ</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Рассчитайте примерную стоимость за 10 секунд</p>
+                </div>
+                <i class="fa-solid fa-calculator text-blue-400 text-xl"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-mono text-gray-400 mb-2">Тип Проекта</label>
+                        <select id="calc-type" onchange="calculatePrice()" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-blue-500">
+                            <option value="25" data-name="Telegram Бот (Базовый)">Telegram Бот (Базовый)</option>
+                            <option value="50" data-name="Telegram Бот + Автовыдача / Stars">Telegram Бот + Автовыдача / Stars</option>
+                            <option value="70" data-name="Мобильное Приложение (Flutter)">Мобильное Приложение (Flutter)</option>
+                            <option value="40" data-name="Веб-сайт / Лендинг">Веб-сайт / Лендинг</option>
+                            <option value="30" data-name="Скрипт Автоматизации / Парсер">Скрипт Автоматизации / Парсер</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-gray-400 mb-2">Дополнительные опции</label>
+                        <div class="space-y-2 text-xs">
+                            <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 cursor-pointer">
+                                <input type="checkbox" id="opt-1" value="15" data-name="Подключение Платежей / Crypto / Stars" onchange="calculatePrice()" class="rounded bg-zinc-800 border-zinc-700 text-blue-500">
+                                <span class="text-gray-300">Подключение Платежей / Crypto / Stars (+$15)</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 cursor-pointer">
+                                <input type="checkbox" id="opt-2" value="20" data-name="Админ-панель & Аналитика" onchange="calculatePrice()" class="rounded bg-zinc-800 border-zinc-700 text-blue-500">
+                                <span class="text-gray-300">Админ-панель & Аналитика (+$20)</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 cursor-pointer">
+                                <input type="checkbox" id="opt-3" value="10" data-name="Установка на VPS и Деплой" onchange="calculatePrice()" class="rounded bg-zinc-800 border-zinc-700 text-blue-500">
+                                <span class="text-gray-300">Установка на ваш VPS под ключ (+$10)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-mono text-gray-500 uppercase tracking-wider mb-2">Ориентировочно</div>
+                        <div class="text-3xl font-extrabold text-white font-mono mb-4" id="calc-total">$25</div>
+                        <div class="text-xs text-gray-400 leading-relaxed mb-4" id="calc-summary">
+                            Выбрано: Telegram Бот (Базовый)
+                        </div>
+                    </div>
+
+                    <button onclick="sendCalcToTg()" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-telegram"></i>
+                        <span>Отправить ТЗ в Telegram</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SECTION 2: Process Steps -->
+        <div class="mb-12">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold text-white tracking-tight">Как Проходит Работа</h2>
+                <p class="text-xs text-gray-500 mt-0.5">3 простых шага от идеи до готового проекта</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="clean-card p-6 relative">
+                    <div class="text-blue-500 font-mono text-xs font-bold mb-2">01 / ШАГ</div>
+                    <h3 class="text-base font-bold text-white mb-2">Обсуждение ТЗ</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Разбираем задачу, утверждаем список функций, фиксируем точные сроки и финальную стоимость.
+                    </p>
+                </div>
+
+                <div class="clean-card p-6 relative">
+                    <div class="text-blue-500 font-mono text-xs font-bold mb-2">02 / ШАГ</div>
+                    <h3 class="text-base font-bold text-white mb-2">Разработка & Демо</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Создаю софт, провожу тесты и показываю промежуточное демо работы (видео/тестовый бот).
+                    </p>
+                </div>
+
+                <div class="clean-card p-6 relative">
+                    <div class="text-blue-500 font-mono text-xs font-bold mb-2">03 / ШАГ</div>
+                    <h3 class="text-base font-bold text-white mb-2">Сдача & Настройка</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Передаю исходный код, помогаю установить всё на ваш сервер и даю гарантию на исправление багов.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SECTION 3: FAQ Accordion -->
+        <div class="clean-card p-6 md:p-8 mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">Часто Задаваемые Вопросы</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Ответы на частые вопросы заказчиков</p>
+                </div>
+                <i class="fa-solid fa-circle-question text-gray-500 text-xl"></i>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
+                        <span>Передаете ли вы исходный код проекта?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                        Да, вы получаете 100% полный доступ к исходному коду без зашифрованных модулей и скрытых подписок.
+                    </p>
+                </details>
+
+                <details class="group bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
+                        <span>Поможете установить бота на мой VPS или хостинг?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                        Конечно. Бесплатно помогу настроить виртуальный сервер (Linux/Ubuntu), установить все зависимости и запустить бота 24/7.
+                    </p>
+                </details>
+
+                <details class="group bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center text-xs font-semibold text-white list-none">
+                        <span>Есть ли гарантия на работу софта?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                        Да, я даю гарантию после сдачи. Если всплывет какой-либо баг по ТЗ — исправлю его быстро и бесплатно.
+                    </p>
+                </details>
+            </div>
+        </div>
+
+        <!-- Order Contact Banner -->
+        <div class="clean-card p-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-blue-950/20 via-zinc-900 to-zinc-900">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-1">Есть задача или техническое задание?</h3>
+                <p class="text-gray-400 text-xs">
+                    Напишите мне в Telegram — обсудим условия, сроки и сразу рассчитаем стоимость.
+                </p>
+            </div>
+
+            <a href="https://t.me/sh2rk_white" target="_blank" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white transition flex items-center gap-2 whitespace-nowrap shadow-lg shadow-blue-600/20">
+                <i class="fa-brands fa-telegram text-sm"></i>
+                <span>Написать в Telegram</span>
+            </a>
+        </div>
+
+        <footer class="text-center text-xs text-gray-600 mt-10">
+            © 2026 Sh2rk Web Studio. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- Scripts for Interactive Features -->
+    <script>
+        function copyTg() {
+            navigator.clipboard.writeText('@sh2rk_white');
+            alert('Юзернейм @sh2rk_white скопирован!');
+        }
+
+        function calculatePrice() {
+            const select = document.getElementById('calc-type');
+            let total = parseInt(select.value);
+            let selectedOptions = [select.options[select.selectedIndex].getAttribute('data-name')];
+
+            ['opt-1', 'opt-2', 'opt-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el.checked) {
+                    total += parseInt(el.value);
+                    selectedOptions.push(el.getAttribute('data-name'));
+                }
+            });
+
+            document.getElementById('calc-total').innerText = '$' + total;
+            document.getElementById('calc-summary').innerText = 'Выбрано: ' + selectedOptions.join(' + ');
+        }
+
+        function sendCalcToTg() {
+            const total = document.getElementById('calc-total').innerText;
+            const summary = document.getElementById('calc-summary').innerText;
+            const text = encodeURIComponent(`Привет! Рассчитал проект на сайте:\n${summary}\nОриентир цены: ${total}\nХочу обсудить детали!`);
+            window.open(`https://t.me/sh2rk_white?text=${text}`, '_blank');
+        }
+
+        calculatePrice();
+    </script>
+</body>
+</html>
